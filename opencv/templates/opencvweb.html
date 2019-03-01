@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% block contents %}
+<div class = 'container'>
+    <h1>같은 해상도만 가능합니다</h1>
+<!-- image upload start-->
+<form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Upload</button>
+</form>
+
+{% if post %}
+<img src="{{ post.document.url }}">
+<p>File uploaded at: <a href="{{ post.document.url }}">{{ post.document }}</a></p>
+{% endif %}
+
+{% if post %}
+<img src="{{ post.document1.url }}">
+<p>File uploaded at: <a href="{{ post.document1.url }}">{{ post.document1 }}</a></p>
+{% endif %}
+
+<p><a href="{% url 'opencvweb' %}">Return to home</a></p>
+<!-- image upload end -->
+</div>
+
+{%endblock%}
